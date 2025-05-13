@@ -7,13 +7,15 @@ public class Asset {
     private double quantity;
     private String purchaseDate;
     private String userId;
+    private double price;
 
-    public Asset(String assetName, String assetId, double quantity, String purchaseDate, String userId) {
+    public Asset(String assetName, String assetId, double quantity, String purchaseDate, String userId, double price) {
         this.assetName = assetName;
         this.assetId = assetId;
         this.quantity = quantity;
         this.purchaseDate = purchaseDate;
         this.userId = userId;
+        this.price = price;
     }
 
     public void setassetName(String assetName) {
@@ -40,6 +42,10 @@ public class Asset {
         this.type = Type;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getassetName() {
         return assetName;
     }
@@ -62,6 +68,10 @@ public class Asset {
 
     public String getType() {
         return type;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
 }
