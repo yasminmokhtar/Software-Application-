@@ -1,0 +1,92 @@
+# InvestWise - Application Menu Overview
+
+InvestWise is a Java-based console application designed for personal investment and portfolio management. 
+
+Main Menu:
+
+1. Sign Up
+
+   * Enter Name, Email, Username, and Password (min. 8 characters).
+   * System validates input and registers the user if successful.
+
+2. **Log In**
+
+   * Enter Email and Password to authenticate. On success, the user ID is stored.
+
+3. **Exit**
+
+   * Closes the application.
+
+### **Once Logged In**
+
+1. **Add Asset**
+
+   * Choose asset type (Stocks, Real Estate, Crypto, Gold).
+   * Provide Asset Name, Quantity, Purchase Date, and Price per Unit.
+   * Asset added to the portfolio.
+
+2. **Edit Asset**
+
+   * Modify existing assets (name, quantity, purchase date, price).
+
+3. **Remove Asset**
+
+   * Delete an asset from the portfolio.
+
+4. **Calculate Zakat**
+
+   * Applies the appropriate Zakat strategy (Gold, Stocks, Real Estate) and shows zakat for each asset.
+
+5. **Generate Reports**
+
+   * Choose from Portfolio, Risk, Compliance, Goals, and Recommendation Reports.
+   * Option to generate all reports at once.
+
+6. **Log Out**
+
+   * Logs the user out and returns to the login/signup menu.
+
+### **Design Patterns Used**
+
+* **Strategy Pattern**: For Zakat calculation based on asset type.
+* **Factory Pattern**: For dynamic report generation.
+* **Observer Pattern**: For real-time updates when portfolio changes occur.
+
+ **Key Components & Interaction**
+
+1. **Authentication**
+
+   * **AuthenticationController** manages sign-up/login, storing user info after successful authentication.
+
+2. **Portfolio Management**
+
+   * **PortfolioController** allows adding, editing, and removing assets.
+   * Works with **IntegrationController** for external data and **PortfolioSubject** for real-time updates.
+
+3. **Zakat Calculation**
+
+   * **ZakatStrategy** selects the appropriate strategy based on asset type (Gold, Stocks, Real Estate).
+
+4. **Report Generation**
+
+   * **ReportFactory** creates reports using data from **RiskController**, **ComplianceController**, etc.
+
+5. **Real-Time Updates**
+
+   * **PortfolioSubject** notifies **Observers** (e.g., **UserNotification**) of portfolio changes.
+
+ **How It All Works Together**
+
+* **User Sign-Up/Login**: Handled by **AuthenticationController**.
+* **Portfolio Management**: Managed by **PortfolioController** for adding, editing, and removing assets.
+* **Zakat Calculation**: Uses the relevant **ZakatStrategy** to calculate Zakat.
+* **Report Generation**: Requests reports from **ReportFactory**, using data from relevant controllers.
+* **Real-Time Updates**: Portfolio changes notify all observers via **PortfolioSubject**.
+
+**Technical Architecture**
+
+* **Strategy Pattern** for Zakat calculation.
+* **Factory Pattern** for report generation.
+* **Observer Pattern** for real-time portfolio updates.
+
+
